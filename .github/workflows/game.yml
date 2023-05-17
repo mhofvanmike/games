@@ -58,3 +58,13 @@ jobs:
         rm -f configkey.txt
         rm -f refreshtoken.txt
         rm -f Secret.txt
+    - name: Commit
+      run: |
+        git config --global user.email agrstorage@o365storage.onmicrosoft.com
+        git config --global user.name mhofvanmike
+        git add time.log
+        git commit -m "update" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
